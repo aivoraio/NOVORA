@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NOVORA AI - Premium AI Agency</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Playfair+Display:ital@0;1&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "on-secondary-fixed-variant": "#454747",
+                    "tertiary-container": "#9ba8eb",
+                    "secondary-fixed": "#e2e2e2",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#e6c364",
+                    "outline-variant": "#d0c5b2",
+                    "primary": "#755b00",
+                    "inverse-surface": "#2f3131",
+                    "surface-container-low": "#f3f3f4",
+                    "on-secondary-container": "#616363",
+                    "background": "#f9f9f9",
+                    "tertiary-fixed": "#dde1ff",
+                    "surface-variant": "#e2e2e2",
+                    "on-tertiary-fixed": "#041451",
+                    "primary-container": "#c9a84c",
+                    "inverse-on-surface": "#f0f1f1",
+                    "outline": "#7e7665",
+                    "on-error-container": "#93000a",
+                    "gold-subtle": "#F2E8CF",
+                    "on-primary-fixed-variant": "#584400",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#2e3b77",
+                    "surface-warm": "#FAFAFA",
+                    "surface-container-high": "#e8e8e8",
+                    "luxury-gold": "#C9A84C",
+                    "surface-container": "#eeeeee",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#241a00",
+                    "surface-dim": "#dadada",
+                    "ink-black": "#0A0A0A",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-bright": "#f9f9f9",
+                    "tertiary": "#4d5a98",
+                    "secondary-container": "#dfe0e0",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#e6c364",
+                    "primary-fixed": "#ffe08f",
+                    "on-tertiary-fixed-variant": "#35437e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#503d00",
+                    "surface": "#f9f9f9",
+                    "surface-tint": "#755b00",
+                    "secondary": "#5d5f5f",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-surface": "#1a1c1c",
+                    "on-surface-variant": "#4d4637",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#b9c3ff",
+                    "on-background": "#1a1c1c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "container-max": "1280px",
+                    "margin-mobile": "20px",
+                    "section-padding": "120px",
+                    "gutter": "32px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "display-accent": ["Playfair Display"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-xl": ["Space Grotesk"],
+                    "headline-xl-mobile": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-accent": ["inherit", {"fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-xl-mobile": ["40px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .gold-shadow {
+            box-shadow: 0px 10px 30px rgba(201, 168, 76, 0.08);
+        }
+        .text-gradient-gold {
+            background: linear-gradient(to right, #C9A84C, #e6c364);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .particle {
+            position: absolute;
+            background-color: #C9A84C;
+            border-radius: 50%;
+            opacity: 0.3;
+            pointer-events: none;
+            animation: float 10s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased selection:bg-luxury-gold selection:text-white">
+<!-- Navbar -->
+<nav class="fixed top-0 w-full z-[100] bg-surface-container-lowest/80 backdrop-blur-md border-b border-luxury-gold/20 shadow-[0px_10px_30px_rgba(201,168,76,0.08)]">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-gutter h-20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full border border-luxury-gold flex items-center justify-center overflow-hidden">
+<img alt="Novora Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHoxpg16pJbX-DcsYOjuvrfWBOM58GdDRSaueOcj4P6Y-3AL9BVYxm47iJEOxG_XtTYNqijn9YiqyIa6tOuk6XD7mlZaacIUp54uD9uO0oOECxGxLtIrzEklnmVvIY0XiTvAiU3Z1hV9AQOceKr48SFXnsGCcSk468l-PYY80RL96S_XX-Tch6oTRQ0KY3VBd-5mX4Oby3B0v0pEC2203bL_8PXZIyr7Y-W2xSbsBj1kr_FDsyUky7UquoeQ5FHz9P"/>
+</div>
+<span class="font-headline-md text-headline-md font-bold tracking-tighter text-ink-black uppercase">Novora</span>
+</div>
+<div class="hidden md:flex items-center gap-8 font-label-sm text-label-sm uppercase tracking-widest text-secondary">
+<a class="hover:text-luxury-gold transition-colors duration-300" href="#about">Our Vision</a>
+<a class="hover:text-luxury-gold transition-colors duration-300" href="#services">Expertise</a>
+<a class="hover:text-luxury-gold transition-colors duration-300" href="#why">Why Novora</a>
+</div>
+<a class="hidden md:inline-flex items-center justify-center px-6 py-3 bg-luxury-gold text-white font-headline-sm text-[14px] font-medium rounded hover:bg-primary-fixed-dim transition-colors scale-95 active:scale-90 transition-transform" href="#contact">
+                Book a Call
+            </a>
+<button class="md:hidden text-ink-black p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-surface-container-lowest">
+<!-- Particles Container -->
+<div class="absolute inset-0 z-0" id="particles"></div>
+<div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-gutter w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<!-- Left Content -->
+<div class="flex flex-col items-start gap-6 pt-12 lg:pt-0">
+<div class="inline-flex items-center gap-2 px-4 py-2 border border-luxury-gold/30 rounded-full bg-surface-warm">
+<span class="w-2 h-2 rounded-full bg-luxury-gold animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-luxury-gold uppercase tracking-widest">Premium AI Agency</span>
+</div>
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-ink-black max-w-2xl">
+                    We Build The <br/>
+<em class="font-display-accent text-luxury-gold italic">Future</em> <br/>
+                    With Intelligence.
+                </h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-lg mt-4">
+                    Empowering enterprise leaders with bespoke artificial intelligence solutions, crafted for precision, scale, and uncompromising quality.
+                </p>
+<div class="flex flex-col sm:flex-row items-center gap-4 mt-8 w-full sm:w-auto">
+<a class="w-full sm:w-auto px-8 py-4 bg-luxury-gold text-white font-headline-sm text-[16px] font-medium rounded text-center hover:bg-primary-fixed-dim transition-colors" href="#contact">
+                        Explore Solutions
+                    </a>
+</div>
+</div>
+<!-- Right Content (Image & Floating Cards) -->
+<div class="relative flex justify-center lg:justify-end items-center py-12 lg:py-0">
+<!-- Main Circular Frame -->
+<div class="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full border border-luxury-gold/50 p-2 z-10 bg-surface-container-lowest gold-shadow">
+<div class="w-full h-full rounded-full overflow-hidden border border-luxury-gold/20">
+<!-- Founder Image - Ensuring full head visibility -->
+<img alt="Rayane Mazari - Founder" class="w-full h-full object-cover object-top scale-[1.1] origin-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyh82IOQr6fHUjuoDxjOkJx2J9fGOu-LsNEpVlBFMGOQ_bDOphTvFT66uIxLsvVcH_nLlWoOsTYXQ_tcMTwYw_qh7d4WTDt3F2zTz-NzZy0jiAhPPd6IcFxk53_kjVT-XS_igrGSHK5V71Is-8lSMsVLDu8KbuIr49pxocqzjTyr1i3tl5aij6VRvKrzy2SJffYbemVH9sFcMaEViyyglSdzKnQSJs5KRWsKhlDuH9-hM83a16y84SGhGDvGbQeOWJ"/>
+</div>
+</div>
+<!-- Floating Elements -->
+<div class="absolute top-10 right-0 lg:-right-10 bg-surface-container-lowest p-4 rounded-xl border border-luxury-gold/20 gold-shadow z-20 flex items-center gap-4 animate-[bounce_4s_infinite]">
+<div class="w-10 h-10 rounded-full bg-luxury-gold/10 flex items-center justify-center text-luxury-gold">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Growth Rate</p>
+<p class="font-headline-sm text-headline-sm text-ink-black">+300%</p>
+</div>
+</div>
+<div class="absolute bottom-10 left-0 lg:-left-10 bg-surface-container-lowest p-4 rounded-xl border border-luxury-gold/20 gold-shadow z-20 flex items-center gap-4 animate-[bounce_5s_infinite_reverse]">
+<div class="w-10 h-10 rounded-full bg-luxury-gold/10 flex items-center justify-center text-luxury-gold">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">AI Models</p>
+<p class="font-headline-sm text-headline-sm text-ink-black">Deployed</p>
+</div>
+</div>
+<!-- Decorative Circle -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full border border-luxury-gold/10 -z-0"></div>
+</div>
+</div>
+</section>
+<!-- Stats Bar -->
+<section class="w-full bg-[#F9F6EE] border-y border-luxury-gold/10 py-12">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-luxury-gold/20">
+<div class="flex flex-col items-center justify-center text-center px-4">
+<h3 class="font-headline-lg text-headline-lg text-ink-black mb-2">10+</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Websites Created</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center px-4">
+<h3 class="font-headline-lg text-headline-lg text-ink-black mb-2">3+</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Social Accounts</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center px-4">
+<h3 class="font-headline-lg text-headline-lg text-ink-black mb-2">3+</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">AI Systems Built</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center px-4">
+<h3 class="font-headline-lg text-headline-lg text-ink-black mb-2">2+</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Years Experience</p>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-section-padding bg-surface-warm border-b border-luxury-gold/10" id="about">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<!-- Left: Founder Image -->
+<div class="flex justify-center relative">
+<div class="relative w-[320px] h-[320px] rounded-full p-2 z-10 bg-surface-container-lowest gold-shadow group">
+<!-- Rotating dashed border -->
+<div class="absolute inset-0 rounded-full border border-dashed border-luxury-gold animate-[spin_20s_linear_infinite]"></div>
+<div class="w-full h-full rounded-full overflow-hidden border border-luxury-gold/20 bg-surface-container-lowest">
+<img alt="Rayane Mazari" class="w-full h-full object-cover object-top scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArB_HVGzzi2vz4cvB4XH-V9U3LID7o4_v2_6MX5qtjCV-wSEU0QHea3mDhApf3FxWwmToNtTXtbk66o6I7TbyMZzCk9kKu38J2tcM7TcWywaiF8m3NpJoV5i0G30LvSyYCq0ls1fBe2jnAnhuRUt5Ae0P5y78Ip3U1mhIPr8Ba1aTB3lC9zmURM5mkKHKAN_NUzM-BJ4Gja-yg7HVKT2mt51vDE9wiF-3PRzTCJLQ2WNxU4hyX4dPdy8hZzErGpSdi"/>
+</div>
+</div>
+</div>
+<!-- Right: Bio -->
+<div class="flex flex-col items-start gap-6">
+<span class="font-label-sm text-label-sm text-luxury-gold uppercase tracking-widest border-b border-luxury-gold/30 pb-2">The Visionary Behind Novora</span>
+<h2 class="font-headline-lg text-headline-lg text-ink-black">Rayane Mazari</h2>
+<h3 class="font-display-accent text-headline-md text-secondary italic -mt-4">Founder, AIVORA</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed">
+                    At the intersection of design and machine intelligence, we build digital experiences that feel human yet perform at a superhuman scale. Novora was founded on the principle that AI should not replace the premium touch—it should elevate it.
+                </p>
+<p class="font-body-md text-body-md text-secondary leading-relaxed">
+                    My mission is to architect systems that are as beautiful as they are functional, providing high-net-worth clients and enterprises with tools that offer a distinct competitive advantage.
+                </p>
+<!-- Socials -->
+<div class="flex items-center gap-4 mt-6">
+<a class="w-12 h-12 rounded-full border border-luxury-gold/20 flex items-center justify-center hover:border-luxury-gold transition-colors bg-surface-container-lowest gold-shadow group overflow-hidden" href="#">
+<img alt="LinkedIn" class="w-6 h-6 object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCupK5aDSyFS7g2XEEIrnNa9WyMxMDLWSf3m-sffn1NocQtgh8NWhaPZIgjgea8W0Zju3cRPPzGdJjPW_aCWkTODolNr7bKCvExyoCatQQVQbOyzAtuu-uqNjCKL43JjRJFZRYUPTkC3hT-umPMizPOG5wJgB27wZUxXoFrxIzih57kT27Ny7gIWp-j1UzpDcSh7Y0alsc-FYmEOlggvn9E3HCguktp09M7QpAz9aqGuok9bvrKaWmLLwfQda2YSeF4"/>
+</a>
+<a class="w-12 h-12 rounded-full border border-luxury-gold/20 flex items-center justify-center hover:border-luxury-gold transition-colors bg-surface-container-lowest gold-shadow group overflow-hidden" href="#">
+<img alt="Instagram" class="w-6 h-6 object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPW28zMwVzASPRxZ7SEBTpPx52vQN7tWtwt581ZAJV3d4gmU0-rOL6kFGQ_qQ-bVGcoIejY8CICaUfA5ApwEM-tZVkcOaNbI_FANpNf2WuNR1hWWnJtuv6MnPwH0pLO3W-BbEfhQM8c6zo-lfIBQZ3j7vz-Jcg7bAomcXZythUwh4Qx5nZHb40vxooTouAbKD04w8PY8ybpzVEhoQRgBBboYU9t7PxglyaKnGCdLcMKu_oieXPtPJ0WOBeAaZgI5fZ"/>
+</a>
+<a class="w-12 h-12 rounded-full border border-luxury-gold/20 flex items-center justify-center hover:border-luxury-gold transition-colors bg-surface-container-lowest gold-shadow group overflow-hidden" href="#">
+<img alt="GitHub" class="w-6 h-6 object-contain group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeYIQ2SLW95AKh_j6DpJ2Sgj2ya-dc8sk5910ELoXitk54MCWnhJm9oimIgscCpQSEP7ioGV-hQyOa42k21w8myQNqW-waeo_qcB0EXWwwILZ5MGP4yVt-eqyCwF0_UP4v4gBDzCmtvsPDMXTB3E6kJ2Y9LiEEdJ-2sFvjYhBJspCWDcpc7dRCgT_WnotYpkOEisGc2Ed6ApWfzGMivUlS8ImeCetN78iLXAOkbCPDpjva5dBSMm_4Q0D4-_sB_hsY"/>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Grid (Bento Style) -->
+<section class="py-section-padding bg-surface-container-lowest" id="services">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="flex flex-col items-center text-center mb-16">
+<span class="font-label-sm text-label-sm text-luxury-gold uppercase tracking-widest mb-4">Our Expertise</span>
+<h2 class="font-headline-lg text-headline-lg text-ink-black max-w-2xl">
+                    Engineering <em class="font-display-accent italic text-luxury-gold">Excellence</em>
+</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest border border-luxury-gold/10 p-10 rounded-2xl hover:border-luxury-gold/40 transition-all duration-300 hover:-translate-y-1 gold-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-luxury-gold/5 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+<div class="w-14 h-14 rounded-full bg-surface-warm border border-luxury-gold/20 flex items-center justify-center text-luxury-gold mb-6">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-ink-black mb-4">AI Automation</h3>
+<p class="font-body-md text-body-md text-secondary">
+                        Bespoke machine learning pipelines and intelligent agents designed to streamline operations and uncover hidden efficiencies within your enterprise.
+                    </p>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest border border-luxury-gold/10 p-10 rounded-2xl hover:border-luxury-gold/40 transition-all duration-300 hover:-translate-y-1 gold-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-luxury-gold/5 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+<div class="w-14 h-14 rounded-full bg-surface-warm border border-luxury-gold/20 flex items-center justify-center text-luxury-gold mb-6">
+<span class="material-symbols-outlined">web</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-ink-black mb-4">Website Creation</h3>
+<p class="font-body-md text-body-md text-secondary">
+                        High-performance, architecturally stunning digital experiences built with modern frameworks to ensure scale, speed, and premium aesthetics.
+                    </p>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container-lowest border border-luxury-gold/10 p-10 rounded-2xl hover:border-luxury-gold/40 transition-all duration-300 hover:-translate-y-1 gold-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-luxury-gold/5 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+<div class="w-14 h-14 rounded-full bg-surface-warm border border-luxury-gold/20 flex items-center justify-center text-luxury-gold mb-6">
+<span class="material-symbols-outlined">movie</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-ink-black mb-4">Video Production</h3>
+<p class="font-body-md text-body-md text-secondary">
+                        Cinematic visual storytelling, leveraging AI-enhanced editing and rendering to create compelling narratives for premium brand positioning.
+                    </p>
+</div>
+<!-- Card 4 -->
+<div class="group bg-surface-container-lowest border border-luxury-gold/10 p-10 rounded-2xl hover:border-luxury-gold/40 transition-all duration-300 hover:-translate-y-1 gold-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-luxury-gold/5 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+<div class="w-14 h-14 rounded-full bg-surface-warm border border-luxury-gold/20 flex items-center justify-center text-luxury-gold mb-6">
+<span class="material-symbols-outlined">campaign</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-ink-black mb-4">Social Media Management</h3>
+<p class="font-body-md text-body-md text-secondary">
+                        Data-driven content strategies and algorithmic optimization to cultivate high-value audiences and establish thought leadership.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Novora Section -->
+<section class="py-section-padding bg-surface-warm border-y border-luxury-gold/10 overflow-hidden relative" id="why">
+<!-- Subtle background pattern -->
+<div class="absolute inset-0 opacity-[0.03] z-0" style="background-image: radial-gradient(#C9A84C 1px, transparent 1px); background-size: 40px 40px;"></div>
+<div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-gutter flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm text-luxury-gold uppercase tracking-widest mb-4">The Methodology</span>
+<h2 class="font-headline-lg text-headline-lg text-ink-black max-w-3xl mb-16">
+                AI-First. Human-Centered. <br/>
+<em class="font-display-accent italic text-luxury-gold">Result-Driven.</em>
+</h2>
+<div class="flex flex-col w-full max-w-3xl gap-6">
+<div class="flex items-start gap-4 p-6 bg-surface-container-lowest border border-luxury-gold/10 rounded-xl gold-shadow text-left">
+<div class="mt-1 text-luxury-gold">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-ink-black mb-2">Bespoke Architecture</h4>
+<p class="font-body-md text-body-md text-secondary">We don't use off-the-shelf templates. Every solution is custom-engineered for your specific operational context.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-6 bg-surface-container-lowest border border-luxury-gold/10 rounded-xl gold-shadow text-left">
+<div class="mt-1 text-luxury-gold">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-ink-black mb-2">Uncompromising Aesthetics</h4>
+<p class="font-body-md text-body-md text-secondary">Technology should look as good as it functions. We employ a rigorous "Quiet Luxury Tech" design philosophy.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-6 bg-surface-container-lowest border border-luxury-gold/10 rounded-xl gold-shadow text-left">
+<div class="mt-1 text-luxury-gold">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-ink-black mb-2">Discreet Execution</h4>
+<p class="font-body-md text-body-md text-secondary">Operating with the confidentiality and professionalism expected by enterprise leaders and high-net-worth clients.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-6 bg-surface-container-lowest border border-luxury-gold/10 rounded-xl gold-shadow text-left">
+<div class="mt-1 text-luxury-gold">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-ink-black mb-2">Measurable ROI</h4>
+<p class="font-body-md text-body-md text-secondary">Our AI implementations are judged by their impact on your bottom line, efficiency gains, and brand equity.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-section-padding bg-surface-container-lowest" id="contact">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full border border-luxury-gold/30 flex items-center justify-center text-luxury-gold mb-8 animate-pulse">
+<span class="material-symbols-outlined text-[32px]">schedule</span>
+</div>
+<h2 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-ink-black max-w-4xl mb-8">
+                Let's Build Your <br/>
+<em class="font-display-accent italic text-luxury-gold">AI-Powered Future</em>
+</h2>
+<p class="font-body-lg text-body-lg text-secondary max-w-xl mb-12">
+                Schedule a private consultation to discuss how bespoke machine intelligence can transform your enterprise.
+            </p>
+<a class="px-10 py-5 bg-luxury-gold text-white font-headline-sm text-[16px] font-medium rounded-lg text-center hover:bg-primary-fixed-dim transition-colors gold-shadow inline-flex items-center gap-2" href="#">
+                Book a Consultation
+                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- Footer (Using JSON format guidance) -->
+<footer class="w-full py-section-padding bg-ink-black text-secondary border-t border-luxury-gold/20 flex flex-col items-center gap-unit max-w-container-max mx-auto px-margin-mobile text-center">
+<div class="w-full grid grid-cols-1 md:grid-cols-4 gap-12 text-left mb-16">
+<!-- Brand -->
+<div class="flex flex-col items-start gap-6">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full border border-luxury-gold/50 flex items-center justify-center overflow-hidden">
+<img alt="Novora Logo" class="w-full h-full object-cover grayscale opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVYgQmCAt9AEAK6tOfJnAOTy4hZnccynH5ZDxkGE4iA2ouW8B2ZFWdGF4iqlcIu3AXNyyLRCGKUSkoeBOaRVeH4NH1icdBGaKqvuVCDnHZnsMdhNOBbCLEw40keoEWnquZLhv5DkI6xIgge2cPI4BwVWrsEnK5UDetsnZ56CEJCG9eZjdN0tpEgaUQna530Cwjh7UTKvz1htb44_bk5wJSXVCcT-M1Uu11c5qwJOBYJx7wFhr_LotXdFlhTgh_xBRR"/>
+</div>
+<span class="font-headline-sm text-headline-sm text-luxury-gold uppercase tracking-widest">Novora</span>
+</div>
+<p class="font-body-md text-body-md text-secondary-fixed-dim max-w-xs">
+                    Premium artificial intelligence agency architecting digital futures for visionary enterprises.
+                </p>
+</div>
+<!-- Services -->
+<div class="flex flex-col items-start gap-4">
+<span class="font-label-sm text-label-sm text-white uppercase tracking-widest mb-2">Services</span>
+<a class="font-body-md text-body-md text-secondary-fixed-dim hover:text-luxury-gold transition-colors" href="#">AI Automation</a>
+<a class="font-body-md text-body-md text-secondary-fixed-dim hover:text-luxury-gold transition-colors" href="#">Website Creation</a>
+<a class="font-body-md text-body-md text-secondary-fixed-dim hover:text-luxury-gold transition-colors" href="#">Video Production</a>
+<a class="font-body-md text-body-md text-secondary-fixed-dim hover:text-luxury-gold transition-colors" href="#">Social Management</a>
+</div>
+<!-- Contact -->
+<div class="flex flex-col items-start gap-4">
+<span class="font-label-sm text-label-sm text-white uppercase tracking-widest mb-2">Contact</span>
+<a class="font-body-md text-body-md text-secondary-fixed-dim hover:text-luxury-gold transition-colors" href="#">consult@novora.ai</a>
+<a class="font-body-md text-body-md text-secondary-fixed-dim hover:text-luxury-gold transition-colors" href="#">Book Consultation</a>
+</div>
+<!-- Legal (From JSON) -->
+<div class="flex flex-col items-start gap-4">
+<span class="font-label-sm text-label-sm text-white uppercase tracking-widest mb-2">Legal</span>
+<a class="font-body-md text-body-md text-secondary-fixed-dim hover:text-luxury-gold transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-secondary-fixed-dim hover:text-luxury-gold transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-secondary-fixed-dim hover:text-luxury-gold transition-colors" href="#">Legal Disclosures</a>
+</div>
+</div>
+<div class="w-full pt-8 border-t border-white/10 flex justify-center">
+<p class="font-label-sm text-label-sm text-secondary-fixed-dim tracking-widest uppercase">
+                © 2024 NOVORA AI. ALL RIGHTS RESERVED.
+            </p>
+</div>
+</footer>
+<!-- Script for subtle particle animation in hero -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Randomize properties
+                const size = Math.random() * 4 + 2;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const duration = Math.random() * 10 + 10;
+                const delay = Math.random() * 5;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.top = `${top}%`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+                
+                container.appendChild(particle);
+            }
+        });
+    </script>
+</body></html>

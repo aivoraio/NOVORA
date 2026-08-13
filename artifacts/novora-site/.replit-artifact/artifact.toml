@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Novora"
+description = "A cinematic white-and-gold website for Novora, an AI-powered creative technology studio, with interactive motion, 3D services, and founder-led storytelling."
+version = "1.0.0"
+id = "artifacts/novora-site"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25302
+
+[services.development]
+run = "pnpm --filter @workspace/novora-site run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/novora-site", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/novora-site/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25302"
+BASE_PATH = "/"

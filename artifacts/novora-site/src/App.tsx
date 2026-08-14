@@ -164,8 +164,15 @@ function Navbar() {
   }, []);
   useEffect(() => {
     if (!open) return;
-    const previousOverflow = document.body.style.overflow;
+    const html = document.documentElement;
+    const previousHtmlOverflow = html.style.overflow;
+    const previousHtmlOverscrollBehavior = html.style.overscrollBehavior;
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousBodyOverscrollBehavior = document.body.style.overscrollBehavior;
+    html.style.overflow = "hidden";
+    html.style.overscrollBehavior = "none";
     document.body.style.overflow = "hidden";
+    document.body.style.overscrollBehavior = "none";
     const menu = menuRef.current;
     const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
     menu?.querySelector<HTMLElement>(".mobile-menu-close")?.focus();
@@ -191,7 +198,10 @@ function Navbar() {
 
     window.addEventListener("keydown", onKeyDown);
     return () => {
-      document.body.style.overflow = previousOverflow;
+      html.style.overflow = previousHtmlOverflow;
+      html.style.overscrollBehavior = previousHtmlOverscrollBehavior;
+      document.body.style.overflow = previousBodyOverflow;
+      document.body.style.overscrollBehavior = previousBodyOverscrollBehavior;
       window.removeEventListener("keydown", onKeyDown);
       menuToggleRef.current?.focus();
     };

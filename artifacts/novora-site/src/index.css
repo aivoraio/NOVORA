@@ -45,13 +45,15 @@
 
 @layer base {
   * { @apply border-border; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; overscroll-behavior-x: none; }
   body {
     @apply antialiased;
     background: #fbfaf7;
     color: #191714;
     font-family: var(--font-body);
     margin: 0;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
   }
   body::before {
     content: "";

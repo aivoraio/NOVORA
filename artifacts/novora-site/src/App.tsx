@@ -152,6 +152,8 @@ function PageMeta({ title, description }: { title: string; description: string }
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLElement>(null);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
   const [location] = useLocation();
   const homePath = location === "/" ? "" : "/";
   const links = [["Vision", `${homePath}#about`], ["Expertise", `${homePath}#services`], ["Method", `${homePath}#method`], ["Founder", `${homePath}#founder`]];
@@ -160,7 +162,43 @@ function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  const jump = (id: string) => { setOpen(false); document.querySelector(id)?.scrollIntoView({ behavior: "smooth" }); };
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const menu = menuRef.current;
+    const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    menu?.querySelector<HTMLElement>(".mobile-menu-close")?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+      if (event.key !== "Tab" || !menu) return;
+      const focusable = Array.from(menu.querySelectorAll<HTMLElement>(focusableSelector));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+      menuToggleRef.current?.focus();
+    };
+  }, [open]);
+
+  const closeMenu = () => setOpen(false);
+  const jump = (id: string) => { closeMenu(); document.querySelector(id)?.scrollIntoView({ behavior: "smooth" }); };
   return <header className={`nav ${scrolled ? "scrolled" : ""}`}>
     <div className="container-n nav-inner">
       <a href={`${homePath}#top`} className="brand" aria-label="Novora home" onClick={(event) => { if (location === "/") { event.preventDefault(); jump("#top"); } }}>
@@ -168,8 +206,13 @@ function Navbar() {
       </a>
       <nav className="nav-links">{links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</nav>
        <a className="nav-cta" href={CALENDLY_URL} target="_blank" rel="noreferrer"><Phone size={16} aria-hidden="true" /> Book a Call <ArrowUpRight size={14} aria-hidden="true" /></a>
-      <button className="menu-toggle" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X size={22} /> : <Menu size={22} />}</button>
-       {open && <nav className="mobile-menu" aria-label="Mobile navigation">{links.map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}<a href={CALENDLY_URL} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}><Phone size={16} aria-hidden="true" /> Book a Call <ArrowUpRight size={14} aria-hidden="true" /></a></nav>}
+       <button ref={menuToggleRef} className={`menu-toggle ${open ? "menu-toggle-hidden" : ""}`} type="button" aria-label="Open menu" aria-expanded={open} tabIndex={open ? -1 : 0} onClick={() => setOpen(!open)}><Menu size={22} /></button>
+       <button className={`menu-backdrop ${open ? "is-open" : ""}`} type="button" aria-label="Close menu" tabIndex={-1} onClick={closeMenu} />
+       <nav ref={menuRef} className={`mobile-menu ${open ? "is-open" : ""}`} aria-label="Mobile navigation" aria-hidden={!open}>
+         <button className="mobile-menu-close" type="button" aria-label="Close menu" onClick={closeMenu}><X size={22} /></button>
+         {links.map(([label, href]) => <a key={href} href={href} onClick={closeMenu}>{label}</a>)}
+         <a href={CALENDLY_URL} target="_blank" rel="noreferrer" onClick={closeMenu}><Phone size={16} aria-hidden="true" /> Book a Call <ArrowUpRight size={14} aria-hidden="true" /></a>
+       </nav>
     </div>
   </header>;
 }

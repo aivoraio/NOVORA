@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Bot, Check, Globe2, Layers3, Menu, Network, Phone, ScanLine, Sparkles, X } from "lucide-react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -209,22 +210,29 @@ function Navbar() {
 
   const closeMenu = () => setOpen(false);
   const jump = (id: string) => { closeMenu(); document.querySelector(id)?.scrollIntoView({ behavior: "smooth" }); };
-  return <header className={`nav ${scrolled ? "scrolled" : ""}`}>
-    <div className="container-n nav-inner">
-      <a href={`${homePath}#top`} className="brand" aria-label="Novora home" onClick={(event) => { if (location === "/") { event.preventDefault(); jump("#top"); } }}>
-        <img src={logo} className="brand-mark" alt="Novora monogram" loading="eager" /><span className="brand-word">NOVORA</span>
-      </a>
-      <nav className="nav-links">{links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</nav>
-       <a className="nav-cta" href={CALENDLY_URL} target="_blank" rel="noreferrer"><Phone size={16} aria-hidden="true" /> Book a Call <ArrowUpRight size={14} aria-hidden="true" /></a>
-       <button ref={menuToggleRef} className={`menu-toggle ${open ? "menu-toggle-hidden" : ""}`} type="button" aria-label="Open menu" aria-expanded={open} tabIndex={open ? -1 : 0} onClick={() => setOpen(!open)}><Menu size={22} /></button>
-       <button className={`menu-backdrop ${open ? "is-open" : ""}`} type="button" aria-label="Close menu" tabIndex={-1} onClick={closeMenu} />
-       <nav ref={menuRef} className={`mobile-menu ${open ? "is-open" : ""}`} aria-label="Mobile navigation" aria-hidden={!open}>
-         <button className="mobile-menu-close" type="button" aria-label="Close menu" onClick={closeMenu}><X size={22} /></button>
-         {links.map(([label, href]) => <a key={href} href={href} onClick={closeMenu}>{label}</a>)}
-         <a href={CALENDLY_URL} target="_blank" rel="noreferrer" onClick={closeMenu}><Phone size={16} aria-hidden="true" /> Book a Call <ArrowUpRight size={14} aria-hidden="true" /></a>
-       </nav>
-    </div>
-  </header>;
+  return <>
+    <header className={`nav ${scrolled ? "scrolled" : ""}`}>
+      <div className="container-n nav-inner">
+        <a href={`${homePath}#top`} className="brand" aria-label="Novora home" onClick={(event) => { if (location === "/") { event.preventDefault(); jump("#top"); } }}>
+          <img src={logo} className="brand-mark" alt="Novora monogram" loading="eager" /><span className="brand-word">NOVORA</span>
+        </a>
+        <nav className="nav-links">{links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</nav>
+        <a className="nav-cta" href={CALENDLY_URL} target="_blank" rel="noreferrer"><Phone size={16} aria-hidden="true" /> Book a Call <ArrowUpRight size={14} aria-hidden="true" /></a>
+        <button ref={menuToggleRef} className={`menu-toggle ${open ? "menu-toggle-hidden" : ""}`} type="button" aria-label="Open menu" aria-expanded={open} tabIndex={open ? -1 : 0} onClick={() => setOpen(!open)}><Menu size={22} /></button>
+      </div>
+    </header>
+    {createPortal(
+      <>
+        <button className={`menu-backdrop ${open ? "is-open" : ""}`} type="button" aria-label="Close menu" aria-hidden={!open} tabIndex={-1} onClick={closeMenu} onTouchMove={(event) => event.preventDefault()} />
+        <nav ref={menuRef} className={`mobile-menu ${open ? "is-open" : ""}`} role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden={!open}>
+          <button className="mobile-menu-close" type="button" aria-label="Close menu" onClick={closeMenu}><X size={22} /></button>
+          {links.map(([label, href]) => <a key={href} href={href} onClick={closeMenu}>{label}</a>)}
+          <a href={CALENDLY_URL} target="_blank" rel="noreferrer" onClick={closeMenu}><Phone size={16} aria-hidden="true" /> Book a Call <ArrowUpRight size={14} aria-hidden="true" /></a>
+        </nav>
+      </>,
+      document.body,
+    )}
+  </>;
 }
 
 function SocialLinks({ footer = false }: { footer?: boolean }) {

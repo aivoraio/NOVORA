@@ -1,0 +1,1 @@
+- [Vite standalone builds](vite-build-env.md) — the Novora artifact build needs the managed workflow’s `PORT` and `BASE_PATH` values when run manually.
